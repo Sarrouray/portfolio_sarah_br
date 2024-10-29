@@ -9,5 +9,7 @@ export default defineConfig({
   vite: {
     plugins: [yaml()]
   },
-  integrations: [react(), tailwind()]
+  integrations: [react(), tailwind()],
+  base: '/portfolio-sarah/'
 });
+

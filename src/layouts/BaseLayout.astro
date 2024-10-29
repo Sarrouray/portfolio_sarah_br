@@ -137,27 +137,35 @@ const { title, description } = Astro.props;
 
 		</style>
 		<script>
-		const cursorRounded = document.querySelector('.custom-cursor');
+		
 const links = document.querySelectorAll('a'); // Sélectionner toutes les balises <a>
 const buttons = document.querySelectorAll('button'); // Sélectionner tous les boutons <button>
 
-function moveCursor(e) {
-  const mouseY = e.clientY;
-  const mouseX = e.clientX;
+	const cursorRounded = document.querySelector('.custom-cursor') as HTMLElement | null;
 
-  cursorRounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+if (!cursorRounded) {
+  console.error('L\'élément cursorRounded n\'existe pas dans le DOM');
+}
 
-  requestAnimationFrame(() => {
-    moveCursor(e); // Appel récursif pour synchroniser avec le rafraîchissement de l'écran
-  });
+function moveCursor(e: MouseEvent) {
+  if (cursorRounded) {
+    const mouseY = e.clientY;
+    const mouseX = e.clientX;
+
+    cursorRounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+  }
 }
 
 function hideCursor() {
-  cursorRounded.style.display = 'none'; // Cacher le curseur
+  if (cursorRounded) {
+    cursorRounded.style.display = 'none'; // Cacher le curseur
+  }
 }
 
 function showCursor() {
-  cursorRounded.style.display = 'block'; // Réafficher le curseur
+  if (cursorRounded) {
+    cursorRounded.style.display = 'block'; // Réafficher le curseur
+  }
 }
 
 window.addEventListener('mousemove', moveCursor);
@@ -173,6 +181,9 @@ buttons.forEach(button => {
   button.addEventListener('mouseover', hideCursor);
   button.addEventListener('mouseout', showCursor);
 });
+
+
+
 
 
 </script>
