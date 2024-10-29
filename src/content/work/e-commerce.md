@@ -1,7 +1,7 @@
 ---
 title: E-commerce de A à Z
 publishDate: 2024
-img: portfolio-sarah/public/assets/ecommerce.png
+img: url('/assets/ecommerce.png');
 img2: portfolio-sarah/public/assets/ecommerce_1.png
 img3: portfolio-sarah/public/assets/ecommerce_2.png
 img4: portfolio-sarah/public/assets/ecommerce_3.png
