@@ -1,0 +1,161 @@
+---
+import { getCollection } from 'astro:content';
+// Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import React from 'react';
+// Component Imports
+import CallToAction from '../components/CallToAction.astro';
+import Grid from '../components/Grid.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import Pill from '../components/Pill.astro';
+import PortfolioPreview from '../components/PortfolioPreview.astro';
+import TextRotate from '../components/TextRotate.jsx';
+
+
+
+// Content Fetching: List four most recent work projects
+const projects = (await getCollection('work'))
+	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+	.slice(0, 4);
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/basics/astro-components/
+---
+
+<BaseLayout>
+
+	<div class="middle stack gap-20 lg:gap-48">
+		<div class="wrapper stack gap-8 lg:gap-20">
+			<header class="hero">
+				<Hero title="Hey ! Je suis Sarah Ben Rhouma ">
+				<TextRotate client:load/>
+				</Hero>
+
+		
+			</header>
+
+
+			
+		</div>
+
+	</div>
+
+
+<img class="image2" src="/assets/imgg.png" alt="Description de l'image" />
+
+<style>
+
+	.image2{
+		width: 30%;
+		position: absolute;
+		right: 4px;
+		bottom: 0px;
+	}
+	.wrapper{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color:#ffccad;
+	}
+
+
+	.middle{
+		align-items: center;
+		display: flex;
+	}
+
+	.roles {
+		display: none;
+	}
+
+	.title{
+		font-size: 50px !important;
+	}
+
+	h1{
+		font-size: 50px !important;
+	}
+	
+	.hero{
+		
+		align-items: center;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		vertical-align: center;
+	}
+	.with-background.bg-variant::before {
+	}
+
+	.section-header {
+		justify-self: center;
+		text-align: center;
+		max-width: 50ch;
+		font-size: var(--text-md);
+		color: var(--gray-300);
+	}
+
+	.section-header h3 {
+		font-size: var(--text-2xl);
+		text-shadow: .1em .1em .3em #c89a7f;
+	}
+
+	@media (min-width: 50em) {
+		.section {
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
+			gap: 5rem;
+		}
+
+		.section.with-cta {
+			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
+		}
+
+		.section-header {
+			grid-area: header;
+			font-size: var(--text-lg);
+		}
+
+		.section-header h3 {
+			font-size: var(--text-4xl);
+		}
+
+		.with-cta .section-header {
+			justify-self: flex-start;
+			text-align: left;
+		}
+
+		.gallery {
+			grid-area: gallery;
+		}
+
+		.cta {
+			grid-area: cta;
+		}
+	}
+
+	/* ====================================================== */
+
+	.mention-card {
+		display: flex;
+		height: 7rem;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		border: 1px solid var(--gray-800);
+		border-radius: 1.5rem;
+		color: var(--gray-300);
+		background: var(--gradient-subtle);
+		box-shadow: var(--shadow-sm);
+	}
+
+	@media (min-width: 50em) {
+		.mention-card {
+			border-radius: 1.5rem;
+			height: 9.5rem;
+		}
+	}
+	
+</style>

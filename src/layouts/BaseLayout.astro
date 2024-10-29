@@ -1,0 +1,185 @@
+---
+// Learn about using Astro layouts:
+// https://docs.astro.build/en/core-concepts/layouts/
+
+// Component Imports
+import MainHead from '../components/MainHead.astro';
+import Nav from '../components/Nav.astro';
+
+interface Props {
+	title?: string | undefined;
+	description?: string | undefined;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<MainHead title={title} description={description} />
+	</head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+	<body>
+		
+		<div class="custom-cursor"></div>
+		<div class="stack backgrounds">
+			<Nav />
+			
+			<slot />
+			
+		
+		</div>
+		<script>
+			// Add “loaded” class once the document has completely loaded.
+			addEventListener('load', () => document.documentElement.classList.add('loaded'));
+		</script>
+
+		<style>
+			body {
+				background-image :var(--bg-image-main);
+				background-repeat: no-repeat; 
+				cursor: url('../../assets/cursor.png'), auto;
+			}
+			:root {
+				--_placeholder-bg: linear-gradient(transparent, transparent);
+				--bg-image-main: url('/assets/backgrounds/bg-main-light-800w.jpg');
+				--bg-image-main-curves: url('/assets/backgrounds/bg-main-light.svg');
+				--bg-image-subtle-1: var(--_placeholder-bg);
+				--bg-image-subtle-2: var(--_placeholder-bg);
+				--bg-image-footer: var(--_placeholder-bg);
+				--bg-svg-blend-mode: overlay;
+				--bg-blend-mode: darken;
+				--bg-image-aspect-ratio: 2.25;
+				--bg-scale: 1.68;
+				--bg-aspect-ratio: calc(var(--bg-image-aspect-ratio) / var(--bg-scale));
+				--bg-gradient-size: calc(var(--bg-scale) * 100%);
+			}
+
+			:root.theme-dark {
+				--bg-image-main: url('/assets/backgrounds/bg-main-dark-800w.jpg');
+				--bg-image-main-curves: url('/assets/backgrounds/bg-main-dark.svg');
+				--bg-svg-blend-mode: darken;
+				--bg-blend-mode: lighten;
+			}
+
+			/* These backgrounds are displayed below the fold, so we lazy load them
+			   once the `.loaded` class has been set.  */
+			:root.loaded {
+				--bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-light-800w.jpg');
+				--bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-light-800w.jpg');
+				--bg-image-footer: url('/assets/backgrounds/bg-footer-light-800w.jpg');
+			}
+			:root.loaded.theme-dark {
+				--bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-dark-800w.jpg');
+				--bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-dark-800w.jpg');
+				--bg-image-footer: url('/assets/backgrounds/bg-footer-dark-800w.jpg');
+			}
+
+			@media (min-width: 50em) {
+				:root {
+					--bg-scale: 1;
+					--bg-image-main: url('/assets/backgrounds/bg-main-light-1440w.jpg');
+				}
+				:root.theme-dark {
+					--bg-image-main: url('/assets/backgrounds/bg-main-dark-1440w.jpg');
+				}
+
+				:root.loaded {
+					--bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-light-1440w.jpg');
+					--bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-light-1440w.jpg');
+					--bg-image-footer: url('/assets/backgrounds/bg-footer-light-1440w.jpg');
+				}
+				:root.loaded.theme-dark {
+					--bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-dark-1440w.jpg');
+					--bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-dark-1440w.jpg');
+					--bg-image-footer: url('/assets/backgrounds/bg-footer-dark-1440w.jpg');
+				}
+			}
+
+
+			.full-height-div{
+				height: 675px;
+			}
+			.backgrounds {
+				min-height: 100%;
+				isolation: isolate;
+			}
+			@media (forced-colors: active) {
+				/* Deactivate custom backgrounds for high contrast users. */
+				.backgrounds {
+					background: none;
+					background-blend-mode: none;
+					--bg-gradient-size: none;
+				}
+			}
+
+			.custom-cursor {
+				width: 34px; 
+				height: 34px; 
+				border: 2px solid var(--accent-regular); 
+				border-radius: 50%; 
+				background: none;
+				position: fixed;
+				pointer-events: none;
+				z-index: 9999;
+				transition: transform 0.15s ease-in-out;
+				box-sizing: border-box; 
+			}
+
+			button {
+				cursor: url('../assets/pointeur.png'), auto;
+			}
+			button:hover ~.custom-cursor.custom-cursor {
+  display: none;
+}
+
+		</style>
+		<script>
+		const cursorRounded = document.querySelector('.custom-cursor');
+const links = document.querySelectorAll('a'); // Sélectionner toutes les balises <a>
+const buttons = document.querySelectorAll('button'); // Sélectionner tous les boutons <button>
+
+function moveCursor(e) {
+  const mouseY = e.clientY;
+  const mouseX = e.clientX;
+
+  cursorRounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+
+  requestAnimationFrame(() => {
+    moveCursor(e); // Appel récursif pour synchroniser avec le rafraîchissement de l'écran
+  });
+}
+
+function hideCursor() {
+  cursorRounded.style.display = 'none'; // Cacher le curseur
+}
+
+function showCursor() {
+  cursorRounded.style.display = 'block'; // Réafficher le curseur
+}
+
+window.addEventListener('mousemove', moveCursor);
+
+// Ajouter des gestionnaires d'événements pour chaque lien
+links.forEach(link => {
+  link.addEventListener('mouseover', hideCursor);
+  link.addEventListener('mouseout', showCursor);
+});
+
+// Ajouter des gestionnaires d'événements pour chaque bouton
+buttons.forEach(button => {
+  button.addEventListener('mouseover', hideCursor);
+  button.addEventListener('mouseout', showCursor);
+});
+
+
+</script>
+
+
+
+
+
+	</body>
+</html>

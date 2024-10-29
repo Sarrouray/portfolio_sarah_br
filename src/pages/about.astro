@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import Hero from '../components/Hero.astro';
+import HeartbeatButton from "../components/HeartbeatButton.jsx";
+---
+
+<BaseLayout title="À Propos | Sarah" description="About Sarah BR">
+	
+			
+			
+			<section>
+			
+				<div class="content">
+				
+					<p>
+						<br><br><h4>Hey, je suis Sarah !</h4><br> À 22 ans, je suis en plein apprentissage en tant que développeuse web front-end.<br> J'adore le design et, dans mes moments libres, je m'amuse à transformer des sites web pour les rendre encore plus attrayants !
+<br><br>
+Mais ce n'est pas tout ! Je suis aussi passionnée par la calligraphie arabe.<br> C’est un art magnifique qui me permet de jouer avec les mots, où chaque courbe raconte une histoire. Pour moi, chaque lettre est une petite œuvre d’art à part entière !<br><br>
+					</p>
+
+<HeartbeatButton/>
+					
+				</div>
+			</section>
+			
+	
+
+</BaseLayout>
+
+<style>
+
+.color{
+	background-color: #a77457;
+	position: fixed;
+}
+
+	.about {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	img {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	section {
+		color :var(--gray-300);
+		
+		display: flex;
+		justify-content: center;
+		display: flex; 
+		
+    	align-items: center;
+	}
+
+	p{
+		font-size: 20px;
+	}
+
+
+	.content {
+		grid-column: 2 / 4;
+		justify-content: center;
+		width: 55%;
+	}
+
+	.content :global(a) {
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	.content :global(a:hover),
+	.content :global(a:focus) {
+		text-decoration-color: currentColor;
+	}
+
+	@media (min-width: 50em) {
+		.about {
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.about > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		section {
+			font-size: var(--text-lg);
+		}
+	}
+</style>
