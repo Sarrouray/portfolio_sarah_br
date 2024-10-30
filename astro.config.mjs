@@ -10,6 +10,5 @@ export default defineConfig({
     plugins: [yaml()]
   },
   integrations: [react(), tailwind()],
-  base: '/portfolio-sarah/'
 });
 
