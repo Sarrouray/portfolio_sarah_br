@@ -10,6 +10,7 @@ export default defineConfig({
     plugins: [yaml()]
   },
   integrations: [react(), tailwind()],
-  site: 'https://sarrouray.github.io/',
+  site: 'https://sarrouray.github.io/portfolio-sarah/',
+  base : '/portfolio-sarah/',
 });
 
