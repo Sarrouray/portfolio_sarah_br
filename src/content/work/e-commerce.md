@@ -1,7 +1,7 @@
 ---
 title: E-commerce de A à Z
 publishDate: 2024
-img: ../../assets/ecommerce.png
+img: ../assets/ecommerce.png
 img2: ../../assets/ecommerce_1.png
 img3: ../../assets/ecommerce_2.png
 img4: ../../assets/ecommerce_3.png
