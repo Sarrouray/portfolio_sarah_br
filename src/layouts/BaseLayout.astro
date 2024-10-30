@@ -41,12 +41,12 @@ const { title, description } = Astro.props;
 			body {
 				background-image :var(--bg-image-main);
 				background-repeat: no-repeat; 
-				cursor: url('./assets/cursor.png'), auto;
+				cursor: './assets/cursor.png', auto;
 			}
 			:root {
 				--_placeholder-bg: linear-gradient(transparent, transparent);
-				--bg-image-main: url('./assets/backgrounds/bg-main-light-800w.jpg');
-				--bg-image-main-curves: url('./assets/backgrounds/bg-main-light.svg');
+				--bg-image-main: './assets/backgrounds/bg-main-light-800w.jpg';
+				--bg-image-main-curves: './assets/backgrounds/bg-main-light.svg';
 				--bg-image-subtle-1: var(--_placeholder-bg);
 				--bg-image-subtle-2: var(--_placeholder-bg);
 				--bg-image-footer: var(--_placeholder-bg);
@@ -59,8 +59,8 @@ const { title, description } = Astro.props;
 			}
 
 			:root.theme-dark {
-				--bg-image-main: url('./assets/backgrounds/bg-main-dark-800w.jpg');
-				--bg-image-main-curves: url('./assets/backgrounds/bg-main-dark.svg');
+				--bg-image-main: './assets/backgrounds/bg-main-dark-800w.jpg';
+				--bg-image-main-curves: './assets/backgrounds/bg-main-dark.svg';
 				--bg-svg-blend-mode: darken;
 				--bg-blend-mode: lighten;
 			}
@@ -68,34 +68,34 @@ const { title, description } = Astro.props;
 			/* These backgrounds are displayed below the fold, so we lazy load them
 			   once the `.loaded` class has been set.  */
 			:root.loaded {
-				--bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-light-800w.jpg');
-				--bg-image-subtle-2: url('./asset/backgrounds/bg-subtle-2-light-800w.jpg');
-				--bg-image-footer: url('./asset/backgrounds/bg-footer-light-800w.jpg');
+				--bg-image-subtle-1: '/assets/backgrounds/bg-subtle-1-light-800w.jpg';
+				--bg-image-subtle-2: './asset/backgrounds/bg-subtle-2-light-800w.jpg';
+				--bg-image-footer: './asset/backgrounds/bg-footer-light-800w.jpg';
 			}
 			:root.loaded.theme-dark {
-				--bg-image-subtle-1: url('./asset/backgrounds/bg-subtle-1-dark-800w.jpg');
-				--bg-image-subtle-2: url('./asset/backgrounds/bg-subtle-2-dark-800w.jpg');
-				--bg-image-footer: url('./asset/backgrounds/bg-footer-dark-800w.jpg');
+				--bg-image-subtle-1: './asset/backgrounds/bg-subtle-1-dark-800w.jpg';
+				--bg-image-subtle-2: './asset/backgrounds/bg-subtle-2-dark-800w.jpg';
+				--bg-image-footer: './asset/backgrounds/bg-footer-dark-800w.jpg';
 			}
 
 			@media (min-width: 50em) {
 				:root {
 					--bg-scale: 1;
-					--bg-image-main: url('./asset/backgrounds/bg-main-light-1440w.jpg');
+					--bg-image-main: './asset/backgrounds/bg-main-light-1440w.jpg';
 				}
 				:root.theme-dark {
-					--bg-image-main: url('./asset/backgrounds/bg-main-dark-1440w.jpg');
+					--bg-image-main: './asset/backgrounds/bg-main-dark-1440w.jpg';
 				}
 
 				:root.loaded {
-					--bg-image-subtle-1: url('./asset/backgrounds/bg-subtle-1-light-1440w.jpg');
-					--bg-image-subtle-2: url('./asset/backgrounds/bg-subtle-2-light-1440w.jpg');
-					--bg-image-footer: url('./asset/backgrounds/bg-footer-light-1440w.jpg');
+					--bg-image-subtle-1: './asset/backgrounds/bg-subtle-1-light-1440w.jpg';
+					--bg-image-subtle-2: './asset/backgrounds/bg-subtle-2-light-1440w.jpg';
+					--bg-image-footer: './asset/backgrounds/bg-footer-light-1440w.jpg';
 				}
 				:root.loaded.theme-dark {
-					--bg-image-subtle-1: url('./asset/backgrounds/bg-subtle-1-dark-1440w.jpg');
-					--bg-image-subtle-2: url('./asset/backgrounds/bg-subtle-2-dark-1440w.jpg');
-					--bg-image-footer: url('./asset/backgrounds/bg-footer-dark-1440w.jpg');
+					--bg-image-subtle-1: './asset/backgrounds/bg-subtle-1-dark-1440w.jpg';
+					--bg-image-subtle-2: './asset/backgrounds/bg-subtle-2-dark-1440w.jpg';
+					--bg-image-footer: './asset/backgrounds/bg-footer-dark-1440w.jpg';
 				}
 			}
 
@@ -130,7 +130,7 @@ const { title, description } = Astro.props;
 			}
 
 			button {
-				cursor: url('.../asset/pointeur.png'), auto;
+				cursor: '../asset/pointeur.png', auto;
 			}
 			button:hover ~.custom-cursor.custom-cursor {
   display: none;
