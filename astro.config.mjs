@@ -4,13 +4,15 @@ import react from "@astrojs/react";
 
 import tailwind from "@astrojs/tailwind";
 
+import vercel from "@astrojs/vercel/serverless";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [yaml()]
   },
-  integrations: [react(), tailwind()],
-  site: 'https://sarrouray.github.io/portfolio-sarah/',
-  base : '/portfolio-sarah/',
-});
 
+  integrations: [react(), tailwind()],
+  output: "server",
+  adapter: vercel(),
+});
