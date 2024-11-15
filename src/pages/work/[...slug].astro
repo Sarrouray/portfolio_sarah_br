@@ -72,11 +72,12 @@ const { entry } = Astro.props;
 
 <style>
 
-	.img_colle{
+	.img_colle {
 		margin-top: -40px !important;
 	}
 
-	.ttl{
+	.ttl {
+		display: flex;
 		align-items: baseline;
 		white-space: break-spaces;
 		font-family: monospace;
@@ -103,8 +104,6 @@ const { entry } = Astro.props;
 	.tags {
 		display: flex;
 		gap: 0.5rem;
-		flex-wrap: wrap;
-		justify-content: center;
 	}
 
 	.description {
@@ -173,9 +172,6 @@ const { entry } = Astro.props;
 
 		.content :global(blockquote) {
 			font-size: var(--text-2xl);
-		}
-		.ttl{
-			display: flex;
 		}
 
 	}
