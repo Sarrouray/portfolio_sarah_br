@@ -8,7 +8,7 @@ const HeartbeatButton = () => {
         target="_blank" 
         rel="noopener noreferrer" 
         className="color animate-buttonheartbeat rounded-md px-4 py-1 text-sm font-semibold text-white"
-        style={{ backgroundColor: '#a77457', position: "fixed", textDecoration: 'none', position: 'relative'}}
+        style={{ backgroundColor: '#a77457', position: "fixed", textDecoration: 'none', position: 'absolute', bottom:'15px'}}
       >
         Curriculum Vitae
       </a>
