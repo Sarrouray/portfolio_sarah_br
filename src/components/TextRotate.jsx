@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-const text = [' Développeuse front-end','Design addict', 'Votre futur collaboratrice ?? ']
+const text = [' Créative sans frontières','Design addict', 'Votre futur étudiante ?? ']
 
 const TextRotate = () => {
   const [index, setIndex] = useState(0)
